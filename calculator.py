@@ -90,8 +90,8 @@ while flag == True:
     if request == "1":
         if n%2==0:
             print("Знаете, в этом выражении нет отпечатки, я хотел проверить вас на внимательность! (В.Е.Шапошников)")
-        addition(matrix)
         matrix = addition(matrix)
+        print('Результат:\n', matrix)
     if request == "0":
         flag = False
     n += 1
