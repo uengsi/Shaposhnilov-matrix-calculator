@@ -4,6 +4,16 @@ def transpornation(matrix):
     a = np.transpose(matrix)
     print(a)
 
+def addition(matrix1):
+    lines = int(input("Кол-во строк: "))
+    columns = int(input("Кол-во столбцов: "))
+    matrix2 = np.zeros((lines, columns))
+    for i in range(lines):
+        for j in range(columns):
+            matrix2[i][j] = float(input())
+    print(matrix2)
+    print(matrix1 + matrix2)
+
 def obrat(matrix):
     if lines == columns and np.linalg.det(matrix) != 0:
         print(np.linalg.inv(matrix))
