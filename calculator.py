@@ -35,3 +35,37 @@ while flag == True:
     if request == "выход":
         flag = False
     n += 1
+import numpy as np
+
+def transpornation(matrix):
+    a = np.transpose(matrix)
+    print(a)
+
+def obrat(matrix):
+    if lines == columns and np.linalg.det(matrix) != 0:
+        print(np.linalg.inv(matrix))
+    else:
+        print('Обратную матрицу возможно высчитать тогда, когда количество строк матрицы равно количеству её столбцов и матрица невырожденная. (В. Е. Шапошников)')
+
+lines = int(input("Кол-во строк: "))
+columns = int(input("Кол-во столбцов: "))
+
+matrix = np.zeros((lines, columns))
+
+for i in range(lines):
+    for j in range(columns):
+        matrix[i][j] = int(input())
+print(matrix)
+
+flag = True
+
+while flag == True:
+    request = input("Запрос: (выберите операци: сложение, умножение, определитель, транспонировать, обратная матрица, ранг)")
+    if request == "транспонировать":
+        print("Скорее всего, в порыве творческого мракобесия Вы совсем забыли, что волк - это не трава; но волк - ты ТРАВА! (Е. А. Лупанова)")
+        transpornation(matrix)
+    if request == "обратная матрица":
+        print("Вы ведь понимаете, что Вас никто ничему не научит, поэтому давайте подобные вещи по дефолту сводить к некой абстракции! (А. А. Дыдычкин)")
+        obrat(matrix)
+    if request == "выход":
+        flag = False
