@@ -11,7 +11,7 @@ def addition(matrix1):
     for i in range(lines):
         for j in range(columns):
             matrix2[i][j] = float(input())
-    print(matrix2)
+    print('Вторая матрица:\n', matrix2)
     print(matrix1 + matrix2)
 
 def obrat(matrix):
