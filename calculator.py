@@ -30,6 +30,13 @@ def rank(matrix):
     print(int(np.linalg.matrix_rank(matrix)))
 
 def matrix_multiply(matrix1, matrix2):
+    lines = int(input("Кол-во строк: "))
+    columns = int(input("Кол-во столбцов: "))
+    matrix2 = np.zeros((lines, columns))
+    for i in range(lines):
+        for j in range(columns):
+            matrix2[i][j] = float(input())
+    print('Вторая матрица:\n', matrix2)
     if len(matrix1[0]) == len(matrix2):
         print(np.dot(matrix1, matrix2))
     else:
