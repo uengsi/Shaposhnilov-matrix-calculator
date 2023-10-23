@@ -12,7 +12,7 @@ def addition(matrix1):
         for j in range(columns):
             matrix2[i][j] = float(input())
     print('Вторая матрица:\n', matrix2)
-    print(matrix1 + matrix2)
+    return matrix1 + matrix2
 
 def obrat(matrix):
     if lines == columns and np.linalg.det(matrix) != 0:
@@ -91,6 +91,7 @@ while flag == True:
         if n%2==0:
             print("Знаете, в этом выражении нет отпечатки, я хотел проверить вас на внимательность! (В.Е.Шапошников)")
         addition(matrix)
+        matrix = addition(matrix)
     if request == "0":
         flag = False
     n += 1
