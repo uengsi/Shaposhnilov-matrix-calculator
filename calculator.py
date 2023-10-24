@@ -3,6 +3,7 @@ import numpy as np
 def transpornation(matrix):
     a = np.transpose(matrix)
     print(a)
+    return a
 
 def addition(matrix1):
     lines = int(input("Кол-во строк: "))
@@ -15,20 +16,21 @@ def addition(matrix1):
         print('Вторая матрица:\n', matrix2)
         print('Результат:\n', matrix1 + matrix2)
         return matrix1 + matrix2
-    print("Сложение матриц возможно тогда, когда матрицы имеют одинаковую размерность. Введите матрицу заново")
+    print("Ошибка: Сложение матриц возможно тогда, когда матрицы имеют одинаковую размерность. Введите матрицу заново")
     addition(matrix1)
 
 def obrat(matrix):
-    if lines == columns and np.linalg.det(matrix) != 0:
-        print(np.linalg.inv(matrix))
-    else:
-        print('Обратную матрицу возможно высчитать тогда, когда количество строк матрицы равно количеству её столбцов и матрица невырожденная. (В. Е. Шапошников)')
+    if len(matrix) == len(matrix[0]) and np.linalg.det(matrix) != 0:
+        print('Результат:\n', np.linalg.inv(matrix))
+        return np.linalg.inv(matrix)
+    print('Ошибка: Обратную матрицу возможно высчитать тогда, когда матрица квадратная и невырожденная.')
+    return matrix
 
 def determinant(matrix):
-    if lines == columns:
-        print(np.linalg.det(matrix))
+    if len(matrix) == len(matrix[0]):
+        print(round(np.linalg.det(matrix), 2))
     else:
-        print('Определитель матрицы возможно высчитать тогда, когда количество строк матрицы равно количеству её столбцов. (В. Е. Шапошников)')
+        print('Ошибка: Определитель матрицы возможно высчитать тогда, когда матрица квадратная.')
 
 def rank(matrix):
     print(int(np.linalg.matrix_rank(matrix)))
@@ -44,7 +46,7 @@ def matrix_multiply(matrix1):
         print('Вторая матрица:\n', matrix2)
         print('Результат:\n', np.dot(matrix1, matrix2))
         return np.dot(matrix1, matrix2)
-    print("Умножение матриц возможно тогда, когда кол-во столбцов 1-й матрицы равно кол-ву строк 2-й. Введите матрицу заново")
+    print("Ошибка: Умножение матриц возможно тогда, когда кол-во столбцов 1-й матрицы равно кол-ву строк 2-й. Введите матрицу заново")
     matrix_multiply(matrix1)
 
 lines = int(input("Кол-во строк: "))
