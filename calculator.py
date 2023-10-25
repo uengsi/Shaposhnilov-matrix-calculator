@@ -5,19 +5,31 @@ def transpornation(matrix):
     print("\nРезультат:\n", a, "\n")
     return a
 
-def addition(matrix1):
+def addition(matrix):
     lines = int(input("\nКол-во строк: "))
     columns = int(input("Кол-во столбцов: "))
     matrix2 = np.zeros((lines, columns))
-    if len(matrix1[0]) == columns and len(matrix1) == lines:
+    if len(matrix[0]) == columns and len(matrix) == lines:
         for i in range(lines):
             for j in range(columns):
                 matrix2[i][j] = float(input())
         print('\nВторая матрица:\n', matrix2)
-        print('\nРезультат:\n', matrix1 + matrix2, "\n")
-        return matrix1 + matrix2
+        print('\nРезультат:\n', matrix + matrix2, "\n")
+        while True:
+            conversation = input("Сохранить матрицу (дa - 1; нет - 0): ")
+            if conversation == "1":
+                matrix += matrix2
+                print("\n")
+                break
+            elif conversation == "0":
+                matrix = matrix
+                print("\n")
+                break
+            else:
+                print("\nВведите одно из чисел, указанных в инструктаже!\n")
+        return matrix
     print("\nОшибка: Сложение матриц возможно тогда, когда матрицы имеют одинаковую размерность. Введите матрицу заново")
-    return addition(matrix1)
+    return addition(matrix)
 
 def obrat(matrix):
     if len(matrix) == len(matrix[0]) and np.linalg.det(matrix) != 0:
@@ -35,23 +47,35 @@ def determinant(matrix):
 def rank(matrix):
     print("\nРанг равен: \n", int(np.linalg.matrix_rank(matrix)), "\n")
 
-def matrix_multiply(matrix1):
+def matrix_multiply(matrix):
     lines = int(input("\nКол-во строк: "))
     columns = int(input("Кол-во столбцов: "))
     matrix2 = np.zeros((lines, columns))
-    if len(matrix1[0]) == lines:
+    if len(matrix[0]) == lines:
         for i in range(lines):
             for j in range(columns):
                 matrix2[i][j] = float(input())
         print('\nВторая матрица:\n', matrix2)
-        print('\nРезультат:\n', np.dot(matrix1, matrix2), "\n")
-        return np.dot(matrix1, matrix2)
+        print('\nРезультат:\n', np.dot(matrix, matrix2), "\n")
+        while True:
+            conversation = input("Сохранить матрицу (дa - 1; нет - 0): ")
+            if conversation == "1":
+                matrix = np.dot(matrix, matrix2)
+                print("\n")
+                break
+            elif conversation == "0":
+                matrix = matrix
+                print("\n")
+                break
+            else:
+                print("\nВведите одно из чисел, указанных в инструктаже!\n")
+        return matrix
     print("\nОшибка: Умножение матриц возможно тогда, когда кол-во столбцов 1-й матрицы равно кол-ву строк 2-й. Введите матрицу заново")
-    return matrix_multiply(matrix1)
+    return matrix_multiply(matrix)
 
-print("Здравствуй, дорогой друг, ты находишься в матричном калькуляторе имени Шапошникова. Данный калькулятор характеризуется лёгкостью, доступностью и неожиданными сюрпризами. Используй весь функционал, чтобы найти все пасхалки (их всего 6)!\n")
+print("Здравствуй, дорогой друг, ты находишься в матричном калькуляторе имени Шапошникова.\nДанный калькулятор характеризуется лёгкостью, доступностью и неожиданными сюрпризами.\nИспользуй весь функционал, чтобы найти все пасхалки (их всего 6)!\n")
 print("Небольшое введение по вводу данных:")
-print("Сначала введите количество строк и столбцов матрицы. Затем построчно вводите элементы матрицы. Под каждый элемент матрицы закладывается одна строка консоли. Все элементы матрицы обязаны быть действительными числами! Запросами операций над матрицами являются числа, указанные в инструктаже. После получения результата Вы продолжаете работать с той матрицей, которая у Вас находится в последнем результате.\n")
+print(" 1.Все элементы матрицы обязаны быть действительными числами!\n 2.Сначала введите количество строк и столбцов матрицы.\n 3.Затем построчно вводите элементы матрицы.\n 4.Под каждый элемент матрицы закладывается одна строка консоли.\n 5.Запросами операций над матрицами являются числа, указанные в инструктаже.\n 6.После получения результата Вы можете продолжить работать с той матрицей, которая у Вас находится в последнем результате, или не сохранять изменения.\n")
 print("Пример создания матрицы:\nКол-во строк: 2\nКол-во столбцов: 2\n1\n2\n3\n4\n\nРезультат:\n\n[[1. 2.]\n [3. 4.]]\n\n\n")
 print("Введите вашу первую матрицу!\n")
 lines = int(input("Кол-во строк: "))
@@ -68,14 +92,7 @@ print(matrix, "\n")
 flag = True
 n = 1
 
-print("Инструкция:")
-print("	1 – сложение матриц;")
-print("	2 – умножение матриц;")
-print("	3 – нахождение определителя;")
-print("	4 – транспонирование;")
-print("	5 – нахождение обратной матрицы;")
-print("	6 – нахождение ранга;")
-print("	0 – выход.\n")
+print("Инструкция:\n", "	1 – сложение матриц;\n", "	2 – умножение матриц;\n", "	3 – нахождение определителя;\n", "	4 – транспонирование;\n", "	5 – нахождение обратной матрицы;\n", "	6 – нахождение ранга;\n", "	7 - инструкция\n", "	0 – выход.\n")
 
 while flag == True:
     request = input("Запрос: ")
@@ -105,6 +122,8 @@ while flag == True:
         matrix = addition(matrix)
     elif request == "0":
         flag = False
+    elif request == "7":
+        print("\n Инструкция:\n", "	1 – сложение матриц;\n", "	2 – умножение матриц;\n", "	3 – нахождение определителя;\n", "	4 – транспонирование;\n", "	5 – нахождение обратной матрицы;\n", "	6 – нахождение ранга;\n",  "	7 - инструкция\n",  "	0 – выход.\n")
     else:
         print("\nВведите одно из чисел, указанных в инструктаже!\n")
     n += 1
